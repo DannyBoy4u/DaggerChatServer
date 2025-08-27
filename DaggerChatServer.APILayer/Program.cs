@@ -1,4 +1,8 @@
+using APILayer.Queries;
+using Carter;
+using DatabaseLayer;
 using Microsoft.AspNetCore.SignalR;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,7 +18,31 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddSignalR();
 
+builder.Services.AddScoped<ITaskingQueries, TaskingQueries>();
+
+builder.Services.AddCarter();
+
+// For Minimal APIs & Carter discovery
+builder.Services.AddEndpointsApiExplorer();
+
+builder.Services.AddSwaggerGen();
+
+
+DotNetEnv.Env.Load();
+
+string connectionString = Environment.GetEnvironmentVariable("DefaultConnectionString");
+// Saving the command below for future use:
+//dotnet ef database update -p ".\DaggerChatServer.DatabaseLayer\DatabaseLayer.csproj" -s ".\DaggerChatServer.APILayer\APILayer.csproj"
+builder.Services.AddDbContext<DatabaseContext>(options => options.UseNpgsql(connectionString));
+
 var app = builder.Build();
+
+// Enable Swagger UI (dev-only typical pattern)
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI(); // /swagger
+}
 
 app.UseCors();
 
@@ -23,7 +51,7 @@ app.MapGet("/", () => "ChatServer OK");
 
 // SignalR hub
 app.MapHub<ChatHub>("/chatHub");
-
+app.MapCarter();
 app.Run("http://localhost:5080"); // use HTTP to avoid dev cert hassles
 
 public class ChatHub : Hub

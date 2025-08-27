@@ -6,3 +6,5 @@
 #Ignore output folders
 bin/
 obj/
+
+.env
