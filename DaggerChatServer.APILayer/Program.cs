@@ -37,6 +37,13 @@ builder.Services.AddDbContext<DatabaseContext>(options => options.UseNpgsql(conn
 
 var app = builder.Build();
 
+// Apply pending migrations on startup
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<DatabaseContext>();
+    db.Database.Migrate();   // creates DB if needed, applies all pending migrations
+}
+
 // Enable Swagger UI (dev-only typical pattern)
 if (app.Environment.IsDevelopment())
 {
