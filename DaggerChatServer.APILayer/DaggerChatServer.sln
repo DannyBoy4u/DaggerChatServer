@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36414.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DaggerChatServer.APILayer", "..\DaggerChatServer.APILayer\APILayer.csproj", "{3783079E-FE2F-3FFF-A70F-C3A4A8B7E589}"
+	ProjectSection(ProjectDependencies) = postProject
+		{340283DB-EA58-4BA6-B1AC-F331A9A4F834} = {340283DB-EA58-4BA6-B1AC-F331A9A4F834}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DaggerChatServer.DatabaseLayer", "..\DaggerChatServer.DatabaseLayer\DatabaseLayer.csproj", "{340283DB-EA58-4BA6-B1AC-F331A9A4F834}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3783079E-FE2F-3FFF-A70F-C3A4A8B7E589}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3783079E-FE2F-3FFF-A70F-C3A4A8B7E589}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3783079E-FE2F-3FFF-A70F-C3A4A8B7E589}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3783079E-FE2F-3FFF-A70F-C3A4A8B7E589}.Release|Any CPU.Build.0 = Release|Any CPU
+		{340283DB-EA58-4BA6-B1AC-F331A9A4F834}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{340283DB-EA58-4BA6-B1AC-F331A9A4F834}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{340283DB-EA58-4BA6-B1AC-F331A9A4F834}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{340283DB-EA58-4BA6-B1AC-F331A9A4F834}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1710922C-1C2B-48C0-9810-41192FD8DC6A}
+	EndGlobalSection
+EndGlobal
