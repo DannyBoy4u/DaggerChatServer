@@ -63,9 +63,9 @@ app.Run("http://localhost:5080"); // use HTTP to avoid dev cert hassles
 
 public class ChatHub : Hub
 {
-    public async Task SendMessage(string user, string message)
+    public async Task SendMessage(string user, string message, Guid taskId)
     {
         // Broadcast to everyone (including sender)
-        await Clients.All.SendAsync("ReceiveMessage", user, message);
+        await Clients.All.SendAsync("ReceiveMessage", user, message, taskId);
     }
 }
